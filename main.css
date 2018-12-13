@@ -4,14 +4,15 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 header{
-    background: #222;
-    height: 80px;
     overflow: hidden;
+    background: #222;
+}
+.logo{
+    color: #fff;
 }
 nav{
     height: 60px;
     line-height: 60px;
-    margin-left: -40px;
     float: right;
 }
 .main-navigation{
