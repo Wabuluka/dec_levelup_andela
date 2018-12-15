@@ -1,0 +1,37 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header{
+    overflow: hidden;
+    background: #222;
+}
+.logo{
+    color: #fff;
+}
+nav{
+    height: 60px;
+    line-height: 60px;
+    float: right;
+}
+.main-navigation{
+    float: right;
+}
+header nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    color: #fff;
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    color: #fff;
+}
