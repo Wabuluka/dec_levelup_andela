@@ -1,27 +1,95 @@
-body{
+body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-header{
+header {
+    background: #dfdddd;
     overflow: hidden;
-    background: #222;
 }
-.logo{
-    color: #fff;
+.wrapper {
+    height: 100%;
+    width: 100%
 }
-nav{
-    height: 60px;
-    line-height: 60px;
-    float: right;
+header .logo {
+    font-size: 30px;
+    font-weight: 600;
+    display: inline-block;
+    width: 150px;
+    padding: 10px;
+    float: left;
+    margin: 10px;
 }
-.main-navigation{
-    float: right;
+.main-header {
+    width: 80%;
+    display: none;
+    float: left;
 }
-header nav ul li{
+.main-header ul li {
     list-style-type: none;
     display: inline-block;
+    padding: 10px;
+}
+
+.main-header ul li:hover {
+    background: #3498DB;
     color: #fff;
+}
+
+
+
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 15px;
+    display: block;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.menu a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+@media screen and (min-width:700px){
+    .menu {
+        display: none;
+    }
+    .main-header {
+        display: inline-block;
+    }
+    .wrapper {
+        min-height: 100%;
+    }
 }
 .container{
     width: 80%;
