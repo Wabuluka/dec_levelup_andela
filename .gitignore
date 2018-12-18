@@ -1,6 +1,5 @@
-.vscode/*
-.env
-/venv/
-/__pycache__/
-.pytest_cache
-
+venv/*
+*.pyc
+.pytest_cache/*
+.vscode
+__pycache__/*
