@@ -1,6 +1,8 @@
 # iReporter - Andela
 [![Maintainability](https://api.codeclimate.com/v1/badges/2f70fe6afecdcb5b79c5/maintainability)](https://codeclimate.com/github/Wabuluka/dec_levelup_andela/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2f70fe6afecdcb5b79c5/test_coverage)](https://codeclimate.com/github/Wabuluka/dec_levelup_andela/test_coverage)
+
 In this API, I have put together a simple way in which you can create, retrieve, update and delete data from a list. The API further immitates how one can report corruption cases in their communities
 ## Getting Started
 To get start with this API, you will need to set up a few prerequists as I am going to guide below.
