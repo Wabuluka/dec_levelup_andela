@@ -37,7 +37,7 @@ class RedFlagRecord(Resource):
 
 
 
-api.add_resource(RedFlagRecord, '/<int:id>')
+api.add_resource(RedFlagRecord, '/api/v1/redflags/<int:id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
