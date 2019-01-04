@@ -4,7 +4,7 @@ from app.models.corrupt_model import CorruptionCase
 import json
 
 """
-
+    Setting up the testing class to be used throughout the testing modules
 """
 class BaseTest(unittest.TestCase):
     def setUp(self):
