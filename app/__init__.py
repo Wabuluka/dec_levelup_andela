@@ -1,12 +1,5 @@
 from flask import Flask
-from flask_restful import Api
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object('config')
-api = Api(app)
+app = Flask(__name__)
 
-
-"""
-    Importing views
-"""
-from app import views
+from app.routes.get_all_route import route_url_all
