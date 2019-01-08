@@ -1,10 +1,4 @@
-from flask import Flask, jsonify, request, json
-from flask.views import MethodView
-
-from app.models.corrupt_model import CorruptionCase
-
-red_flag_records = []
-count = 0
+from . import *
 
 """
     creating a red flag incident

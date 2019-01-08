@@ -4,7 +4,7 @@ class UserModel:
 
     # initialization
     def __init__(self, **kwargs):
-        self.id = kwargs.get("id")
+        self.userid = kwargs.get("id")
         self.firstname = kwargs.get("firstname")
         self.lastname = kwargs.get("lastname")
         self.othernames = kwargs.get("othernames")
@@ -17,7 +17,7 @@ class UserModel:
     # convert user attributes to a dictionary
     def usr_dictionary(self):
         return {
-            "id" : self.id,
+            "userid" : self.userid,
             "firstname": self.firstname,
             "lastname": self.lastname,
             "othernames": self.othernames,
