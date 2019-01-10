@@ -1,10 +1,4 @@
-from flask import Flask, jsonify, request, json
-from flask.views import MethodView
-
-from app.models.corrupt_model import CorruptionCase
-
-red_flag_records = []
-count = 0
+from . import *
 
 """
     creating a red flag incident
@@ -26,6 +20,6 @@ class CreateRedFlagMap(MethodView):
             video = data['video'],
             comment = data['comment']
         )
-        red_flag_records.append(red_flag_record)
+        red_flag_records.append(red_flag_record.case_dictionary())
         return jsonify({"data": red_flag_record.case_dictionary()})
     
