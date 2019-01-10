@@ -14,11 +14,13 @@ class CorruptionCase:
         self.videos = kwargs.get("videos")
         self.images = kwargs.get("images")
         self.comment = kwargs.get("comment")
+
+
     # convert to dictionary
     def case_dictionary(self):
         return {
             "id": self.id, 
-            "createdOn":self.createdOn.date.today(),
+            "createdOn":self.createdOn,
             "createdBy":self.createdBy,
             "caseTypes":self.caseType,
             "location":self.location,
@@ -28,6 +30,7 @@ class CorruptionCase:
             "comment":self.comment
             }
 
+    
     # must be created by someone
     def created_by_validation(self, createdBy):
         if not isinstance(createdBy, str):
