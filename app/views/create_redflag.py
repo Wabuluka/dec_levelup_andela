@@ -20,6 +20,6 @@ class CreateRedFlagMap(MethodView):
             video = data['video'],
             comment = data['comment']
         )
-        red_flag_records.append(red_flag_record)
+        red_flag_records.append(red_flag_record.case_dictionary())
         return jsonify({"data": red_flag_record.case_dictionary()})
     

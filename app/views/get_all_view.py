@@ -16,4 +16,5 @@ class GetAllCorruptionMap(MethodView):
     
             if len(red_flag_records) <1:
                 return jsonify({"status":404,"message":"Resource does not exist"  }),404
-        
+        # data = red_flag_records
+        # return jsonify({"data": data})
