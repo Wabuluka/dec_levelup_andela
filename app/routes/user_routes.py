@@ -1,4 +1,4 @@
-from app.views.create_new_user import CreateNewUser
+from app.views.user_views import CreateNewUser
 from app import app
 
 route_url_create_new_user = CreateNewUser.as_view('new_user')

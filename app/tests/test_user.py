@@ -1,5 +1,4 @@
-from app.tests.test_base import BaseTest
-import json
+from app.tests.test_base import json, BaseTest
 
 class TestCreateNewUser(BaseTest):
 
