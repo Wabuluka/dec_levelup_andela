@@ -41,7 +41,9 @@ After  the dependencies are installed the API should work following the endpoint
 ## Endpoints in the API
 |REQUEST TYPE| URL | DESCRIPTION |
 |------------|-----|-------------|
-|POST| /api/v1/redflags/<int:id>| Add a new red flag record|
+|POST| /api/v1/redflagrecord| Add a new red flag record|
+|GET| /api/v1/redflagrecords| Gets all the available red flag records in the list|
+|DELETE| /api/v1/redflagrecords/<int:id>| Deletes a red flag record|
 
 ## Running the tests
 
