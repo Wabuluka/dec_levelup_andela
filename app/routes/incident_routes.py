@@ -1,4 +1,4 @@
-from app.views.create_redflag import CreateRedFlagMap
+from app.views.incident_views import CreateRedFlagMap
 from app import app
 
 route_url_create = CreateRedFlagMap.as_view('create')
