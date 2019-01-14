@@ -11,11 +11,12 @@ class CreateRedFlagMap(MethodView):
 
         count +=1
         red_flag_record = CorruptionCase(
-            id = data['id'],
+            id = len(red_flag_records) + 1,
             createdBy = data['createdBy'],
             caseType = data['caseType'],
             location = data['location'],
             status = data['status'],
+            createdon = date.today(),
             image = data['image'],
             video = data['video'],
             comment = data['comment']
@@ -24,24 +25,9 @@ class CreateRedFlagMap(MethodView):
         return jsonify({"data": red_flag_record.case_dictionary()})
 
 class GetAllCorruptionMap(MethodView):
-    def get(self, id):
-        if id is None:
-            if len(red_flag_records) < 1:
-                return jsonify({"status":404,"message":"Resource does not exist" }),404
-            data =red_flag_records
-            return jsonify({"status":200 ,"data": data}),200
-        else:
-            for index in range(len(red_flag_records)):
-                if red_flag_records[index]["id"]== id: 
-                    return jsonify({"status":200,"data":red_flag_records[index] }),200
-                elif index == (len(red_flag_records) -1):
-                    return jsonify({"status":404,"message":"Resource does not exist" }) ,404
 
-    
-            if len(red_flag_records) <1:
-                return jsonify({"status":404,"message":"Resource does not exist"  }),404
-        # data = red_flag_records
-        # return jsonify({"data": data})
+    def get(self):
+        return jsonify({"data": red_flag_records})
 
 class GetOneCorruptionMap(MethodView):
     

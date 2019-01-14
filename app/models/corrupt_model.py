@@ -30,9 +30,4 @@ class CorruptionCase:
             "comment":self.comment
             }
 
-    
-    # must be created by someone
-    def created_by_validation(self, createdBy):
-        if not isinstance(createdBy, str):
-            return
-        return True
+   
