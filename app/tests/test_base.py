@@ -15,19 +15,8 @@ class BaseTest(unittest.TestCase):
         self.app = app
         self.client = self.app.test_client()
 
-    def demo_data(self):
-        create_incident = {
-            "id": 1,
-            "createdBy":"davieswabuluka",
-            "red_flag_title": "thieves in the allie",
-            "caseType": "redflag",
-            "location": "old kampasla",
-            "status": "false",
-            "comment": "too early to steal"
-        }
-        return create_incident
 
-
-
+    def tear_down(self):
+        corruptioncasemodel
 if __name__ == '__main__':
     unittest.main()

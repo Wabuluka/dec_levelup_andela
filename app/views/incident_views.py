@@ -48,3 +48,20 @@ class DeleteRedFlag(MethodView):
                 del red_flag_records[record]
                 return jsonify({"status": 200, "data": [{"id":id,"message": "Deleted"}] }),200
         return jsonify({"status": 404, "message": "not found"})
+
+class EditStatusMap(MethodView):
+
+    def put(self, id):
+        # redflag = [flag.__dict__ for flag in red_flag_records if flag.__dict__['id']==int(id)]
+        # redflag[0]['comment'] = request.get_json['comment']
+        # return jsonify({"message":"editted successfully"})
+        data = request.get_json()
+        if len(red_flag_records) <1:
+            return jsonify({"status":404,"message":"Not Found"  }),404    
+        for record in range(len(red_flag_records)):
+            if red_flag_records[record]["id"] == id:
+                # record[0]['comment'] = data['comment']
+                record.comment = data['comment']
+                return jsonify({"status": 200, "data": [{"id":id,"message": "edited"}] }),200
+        return jsonify({"status": 404, "message": "not found"})
+
