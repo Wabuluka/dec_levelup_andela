@@ -33,7 +33,7 @@ class GetOneCorruptionMap(MethodView):
         for record in range(len(red_flag_records)):
             if red_flag_records[record]["id"] == id:
                 return jsonify({"status": 200, "data": red_flag_records[record]}), 200
-            elif red_flag_records[record]["id"] == None:
+            elif red_flag_records[record]["id"] != id:
                 return jsonify({"status": 404, "message": "Red flag was not found"}), 404
             elif record == (len(red_flag_records) -1):
                 return jsonify({"status": 404, "message": "Red flag was not found"}), 404
