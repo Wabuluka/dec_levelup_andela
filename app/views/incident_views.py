@@ -5,7 +5,7 @@ from . import *
 """
 class CreateRedFlagMap(MethodView):
     
-    def post(self, id):
+    def post(self):
         data = request.get_json()
         global count
 
