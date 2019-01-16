@@ -17,8 +17,6 @@ class CreateRedFlagMap(MethodView):
             location = data['location'],
             status = data['status'],
             createdon = date.today(),
-            image = data['image'],
-            video = data['video'],
             comment = data['comment']
         )
         red_flag_records.append(red_flag_record.case_dictionary())
