@@ -19,8 +19,8 @@ class CreateRedFlagMap(MethodView):
             createdon = date.today(),
             comment = data['comment']
         )
-        red_flag_records.append(red_flag_record.case_dictionary())
-        return jsonify({"data": red_flag_record.case_dictionary()})
+        red_flag_records.append(red_flag_record.incident_to_dictionary())
+        return jsonify({"data": red_flag_record.incident_to_dictionary()})
 
 class GetAllCorruptionMap(MethodView):
 
