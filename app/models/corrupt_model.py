@@ -11,23 +11,46 @@ class CorruptionCase:
         self.createdBy = kwargs.get("createdBy")
         self.location = kwargs.get("location")
         self.status = kwargs.get("status")
-        self.videos = kwargs.get("videos")
-        self.images = kwargs.get("images")
         self.comment = kwargs.get("comment")
 
 
     # convert to dictionary
-    def case_dictionary(self):
+    def incident_to_dictionary(self):
+        # if self.caseType == 'redflag':
+        #     incident = {
+        #         "redflag": [
+        #             {
+        #                 "id": self.id, 
+        #                 "createdOn":datetime.datetime.now(),
+        #                 "createdBy":self.createdBy,
+        #                 "location":self.location,
+        #                 "status":self.status,
+        #                 "comment":self.comment
+        #             }
+        #         ]
+        #     }
+        #     return incident
+                
+            
+        # elif self.caseType == 'intervention':
+        #     incident = {
+        #         "intervention": [
+        #             {
+        #                 "id": self.id, 
+        #                 "createdOn":datetime.datetime.now(),
+        #                 "createdBy":self.createdBy,
+        #                 "location":self.location,
+        #                 "status":self.status,
+        #                 "comment":self.comment
+        #             }
+        #         ]
+        #     }
+        #     return incident
         return {
             "id": self.id, 
-            "createdOn":self.createdOn,
+            "createdOn":datetime.datetime.now(),
             "createdBy":self.createdBy,
-            "caseTypes":self.caseType,
             "location":self.location,
             "status":self.status,
-            "images":self.images,
-            "videos":self.videos,
             "comment":self.comment
-            }
-
-   
+        }
