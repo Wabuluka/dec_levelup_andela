@@ -9,11 +9,11 @@ class TestCreateNewUser(BaseTest):
             "lastname": "wabuluka",
             "othernames": "me",
             "email":"me@me.com", 
-            "phoneNumber":123433, 
+            # "phoneNumber":123433, 
             "username":"dme",
-            "registeredOn":"123223",
-            "isAdmin":True
+            # "registeredOn":"123223",
+            # "isAdmin":True
         }
-        response = self.client.get('/api/v1/user', content_type = 'application/json', data = json.dumps(user))
-        data =  json.loads(response.data)
-        self.assertEqual(data["status"],404)
+        response = self.client.post('/api/v1/user', content_type = 'application/json', data = json.dumps(user))
+        # data =  json.loads.decode()(response.data)
+        self.assertEqual(response.status_code,200)

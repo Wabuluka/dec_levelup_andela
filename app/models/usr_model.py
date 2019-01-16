@@ -11,8 +11,8 @@ class UserModel:
         self.email = kwargs.get("email")
         self.phonenumber = kwargs.get("phonenumber")
         self.username = kwargs.get("username")
-        self.registeredOn = kwargs.get("registeredOn")
-        self.isAdmin = kwargs.get("isAdmin")
+        # self.registeredOn = kwargs.get("registeredOn")
+        # self.isAdmin = kwargs.get("isAdmin")
 
     # convert user attributes to a dictionary
     def usr_dictionary(self):
@@ -22,8 +22,8 @@ class UserModel:
             "lastname": self.lastname,
             "othernames": self.othernames,
             "email":self.email, 
-            "phoneNumber":self.phonenumber, 
+            # "phoneNumber":self.phonenumber, 
             "username":self.username,
-            "registeredOn":self.registeredOn.date.today(),
-            "isAdmin":self.isAdmin
+            # "registeredOn":self.registeredOn.date.today(),
+            # "isAdmin":self.isAdmin
         }

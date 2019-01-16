@@ -55,7 +55,18 @@ class EditStatusMap(MethodView):
         # redflag = [flag.__dict__ for flag in red_flag_records if flag.__dict__['id']==int(id)]
         # redflag[0]['comment'] = request.get_json['comment']
         # return jsonify({"message":"editted successfully"})
+        # data = request.get_json()
+        # if len(red_flag_records) <1:
+        #     return jsonify({"status":404,"message":"Not Found"  }),404    
+        # for record in range(len(red_flag_records)):
+        #     if red_flag_records[record]["id"] == id:
+        #         # record[0]['comment'] = data['comment']
+        #         record.comment = data['comment']
+        #         return jsonify({"status": 200, "data": [{"id":id,"message": "edited"}] }),200
+        # return jsonify({"status": 404, "message": "not found"})
+
         data = request.get_json()
+        record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
@@ -65,3 +76,29 @@ class EditStatusMap(MethodView):
                 return jsonify({"status": 200, "data": [{"id":id,"message": "edited"}] }),200
         return jsonify({"status": 404, "message": "not found"})
 
+class EditLocationMap(MethodView):
+
+    def put(self, id):
+        # redflag = [flag.__dict__ for flag in red_flag_records if flag.__dict__['id']==int(id)]
+        # redflag[0]['comment'] = request.get_json['comment']
+        # return jsonify({"message":"editted successfully"})
+        # data = request.get_json()
+        # if len(red_flag_records) <1:
+        #     return jsonify({"status":404,"message":"Not Found"  }),404    
+        # for record in range(len(red_flag_records)):
+        #     if red_flag_records[record]["id"] == id:
+        #         # record[0]['comment'] = data['comment']
+        #         record.comment = data['comment']
+        #         return jsonify({"status": 200, "data": [{"id":id,"message": "edited"}] }),200
+        # return jsonify({"status": 404, "message": "not found"})
+
+        data = request.get_json()
+        record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        if len(red_flag_records) <1:
+            return jsonify({"status":404,"message":"Not Found"  }),404    
+        for record in range(len(red_flag_records)):
+            if red_flag_records[record]["id"] == id:
+                # record[0]['comment'] = data['comment']
+                record.location = data['location']
+                return jsonify({"status": 200, "data": [{"id":id,"message": "edited"}] }),200
+        return jsonify({"status": 404, "message": "not found"})
