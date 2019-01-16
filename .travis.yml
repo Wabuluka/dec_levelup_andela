@@ -6,7 +6,11 @@ install:
   - pip install -r requirements.txt
   - pip install pytest-cov
 script:
-  - pytest -v --cov app --cov-report term-missing
+  # - pytest -v --cov app --cov-report term-missing
+  - pytest --cov
+  - coverage
+  - coverage3 report
+  - coveralls
 after_success:
   - coveralls
 
