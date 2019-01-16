@@ -16,7 +16,5 @@ class BaseTest(unittest.TestCase):
         self.client = self.app.test_client()
 
 
-    def tear_down(self):
-        corruptioncasemodel
 if __name__ == '__main__':
     unittest.main()

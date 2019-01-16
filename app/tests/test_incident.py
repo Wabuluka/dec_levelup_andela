@@ -7,9 +7,9 @@ class TestOneRedFlag(BaseTest):
     
 
     def test_get_one_redflag(self):
-        response = self.client.get('/api/v1/redflagrecords/1')
+        response = self.client.get('/api/v1/redflagrecords/1',)
         data =  json.loads(response.data)
-        self.assertEqual(data["status"],404)
+        self.assertEqual(response.status_code, data)
 
     def test_all_redflags(self):
         
