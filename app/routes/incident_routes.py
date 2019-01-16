@@ -15,4 +15,4 @@ app.add_url_rule('/api/v1/redflagrecords/<int:id>',defaults = None,
 
 route_url_delete_one = DeleteRedFlag.as_view('delete_one')
 app.add_url_rule('/api/v1/redflagrecords/<int:id>',defaults = None, 
-                    view_func=route_url_get_one, methods=['DELETE',])
+                    view_func=route_url_delete_one, methods=['DELETE',])
