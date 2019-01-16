@@ -1,7 +1,7 @@
-venv
+venv/
 *.pyc
 .pytest_cache/*
 .vscode
-__pycache__
+__pycache__/
 htmlcov/*
-app/__pycache__
+**/__pycache__/*
