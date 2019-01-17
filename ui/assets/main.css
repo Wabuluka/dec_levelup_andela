@@ -125,6 +125,10 @@ header nav ul li a{
     width: 50px;
     height: 50px;
 }
+.dash-two-user{
+    width: 78%;
+    float: right;
+}
 .dashboard-content{
     background: #3498DB;
     min-height: 100%;
@@ -164,9 +168,6 @@ header nav ul li a{
 }
 .dash-three-content{
     padding: 10px;
-}
-.dash-three-content-notifications-top{
-
 }
 .notification{
     background: #1d4344;
