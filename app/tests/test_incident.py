@@ -21,10 +21,10 @@ class TestOneRedFlag(BaseTest):
         # data =  json.loads(response.data)
         self.assertEqual(response.status_code,200)
 
-    # def test_get_one_redflag(self):
-    #     response = self.client.get('/api/v1/redflagrecords/1',)
-    #     # data =  json.loads(response.data)
-    #     self.assertEqual(response.status_code, 404)
+    def test_get_one_redflag(self):
+        response = self.client.get('/api/v1/redflagrecords/1',)
+        # data =  json.loads(response.data)
+        self.assertEqual(response.status_code, 404)
 
     # def test_all_redflags(self):
         
