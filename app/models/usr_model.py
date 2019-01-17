@@ -27,3 +27,7 @@ class UserModel:
             # "registeredOn":self.registeredOn.date.today(),
             # "isAdmin":self.isAdmin
         }
+
+    
+    def form_username(self):
+        return self.firstname + self.lastname

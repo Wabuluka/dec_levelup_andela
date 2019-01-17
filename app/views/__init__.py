@@ -1,4 +1,6 @@
 from flask import Flask, jsonify, request, json
+
+from app.validation.input_validation import Validator
 from flask.views import MethodView
 from datetime import date
 
