@@ -6,6 +6,23 @@ from . import *
 class CreateRedFlagMap(MethodView):
     
     def post(self):
+        # data = request.get_json()
+        # global count 
+        # count +=1
+        # id = len(red_flag_records) + 1
+        # createdBy = data['createdBy']
+        # caseType = data['caseType']
+        # location = data['location']
+        # status = data['status']
+        # createdon = date.today()
+        # comment = data['comment']
+        # keys = ("createdBy", "caseType" ,"location", "status", "comment")
+        # if not set(keys).issubset(set(request.json)):
+        #     return jsonify({"status":"gfdsgbgfvd"})        
+        # red_flag_record = CorruptionCase(id, createdBy, caseType, location, status, createdon, comment)        
+        # red_flag_records.append(red_flag_record.incident_to_dictionary())
+        # return jsonify({"data": red_flag_record.incident_to_dictionary()})
+
         data = request.get_json()
         global count
 
@@ -19,7 +36,9 @@ class CreateRedFlagMap(MethodView):
             createdon = date.today(),
             comment = data['comment']
         )
-        
+        if data['createdBy'] == "":
+            return jsonify({"status": 405, "message": "not allowed"})
+
         red_flag_records.append(red_flag_record.incident_to_dictionary())
         return jsonify({"data": red_flag_record.incident_to_dictionary()})
 

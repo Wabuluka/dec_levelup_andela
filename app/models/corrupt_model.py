@@ -5,6 +5,13 @@ class CorruptionCase:
 
     # initialization
     def __init__(self, **kwargs):
+        # self.id = kwargs[0]
+        # self.caseType = kwargs[1]
+        # self.createdOn = kwargs[2]
+        # self.createdBy = kwargs[3]
+        # self.location = kwargs[4]
+        # self.status = kwargs[5]
+        # self.comment = kwargs[6]
         self.id = kwargs.get("id")
         self.caseType = kwargs.get("caseType")
         self.createdOn = kwargs.get("createOn")
@@ -50,6 +57,7 @@ class CorruptionCase:
             "id": self.id, 
             "createdOn":datetime.datetime.now(),
             "createdBy":self.createdBy,
+            "caseType" : self.caseType,
             "location":self.location,
             "status":self.status,
             "comment":self.comment

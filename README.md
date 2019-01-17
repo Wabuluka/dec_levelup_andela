@@ -42,9 +42,15 @@ After  the dependencies are installed the API should work following the endpoint
 ## Endpoints in the API
 |REQUEST TYPE| URL | DESCRIPTION |
 |------------|-----|-------------|
-|POST| /api/v1/redflagrecord| Add a new red flag record|
+|POST| /api/v1/redflagrecords| Add a new red flag record|
+|POST| /api/v1//api/v1/user| Register new user|
 |GET| /api/v1/redflagrecords| Gets all the available red flag records in the list|
+|GET| /api/v1/redflagrecords/<int:id>| Get a specific incident by id|
+|PUT| /api/v1/redflagrecords/edit-status/<int:id>| Edit a specific incident's status|
 |DELETE| /api/v1/redflagrecords/<int:id>| Deletes a red flag record|
+|PUT| /api/v1/redflagrecords/edit-location/<int:id>| Edit a specific incident's location|
+|PUT| /api/v1/redflagrecords/edit-comment/<int:id>| Edit a specific incident's comment|
+
 
 ## Running the tests
 
@@ -57,9 +63,8 @@ Although at the moment my tests are not fully functional, am still learning how 
 python -m unittest
 ```
 ## Deployment
+This API has been hosted with [heroku](https://andela35dwabuluka.herokuapp.com/api/v1/redflagrecords)
 
-You can find a demo view of how this application works from heroku
-(still working on deployment)
 ## Authors
 
 * **Davies Wabuluka**  - [Github](https://github.com/Wabuluka)

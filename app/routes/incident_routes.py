@@ -29,5 +29,5 @@ app.add_url_rule('/api/v1/redflagrecords/edit-location/<int:id>',defaults = None
 
 
 route_url_edit_comment = EditLocationMap.as_view('edit_comment')
-app.add_url_rule('/api/v1/redflagrecords/edit-location/<int:id>',defaults = None, 
+app.add_url_rule('/api/v1/redflagrecords/edit-comment/<int:id>',defaults = None, 
                     view_func=route_url_edit_comment, methods=['PUT',])

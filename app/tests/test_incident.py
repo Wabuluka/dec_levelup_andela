@@ -25,7 +25,7 @@ class TestOneRedFlag(BaseTest):
             "status": "false",
             "comment": "too early to steal"
         }
-        response = self.client.post('/api/v1/redflagrecords', content_type = 'application/json', data = json.dumps(data))
+        self.client.post('/api/v1/redflagrecords', content_type = 'application/json', data = json.dumps(data))
         response_del = self.client.get('/api/v1/redflagrecords/1')
         data =  json.loads(response_del.data)
         self.assertEqual(response_del.status_code, 200)
