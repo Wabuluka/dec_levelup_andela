@@ -8,7 +8,6 @@ script:
   # - pytest -v --cov app --cov-report term-missing
   - pytest --cov
   - coverage
-  - coveralls
   - coverage report
 after_success:
   - coveralls
