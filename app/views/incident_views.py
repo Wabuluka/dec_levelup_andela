@@ -2,6 +2,7 @@ from . import *
 """
     creating a red flag incident
 """
+
 class CreateRedFlagMap(MethodView):
     
     def post(self):
@@ -74,7 +75,7 @@ class EditStatusMap(MethodView):
 
     def put(self, id):
         data = request.get_json()
-        record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        # record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
@@ -87,7 +88,7 @@ class EditLocationMap(MethodView):
 
     def put(self, id):
         data = request.get_json()
-        record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        # record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
@@ -101,7 +102,7 @@ class EditCommentMap(MethodView):
 
     def put(self, id):
         data = request.get_json()
-        record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        # record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
