@@ -7,6 +7,8 @@ from datetime import date
 from app.models.corrupt_model import CorruptionCase
 from app.models.usr_model import UserModel
 
+incidentmodel = CorruptionCase()
+
 red_flag_records = []
 users = []
 count = 0

@@ -1,5 +1,4 @@
 from . import *
-
 """
     creating a red flag incident
 """
@@ -22,6 +21,8 @@ class CreateRedFlagMap(MethodView):
         # red_flag_record = CorruptionCase(id, createdBy, caseType, location, status, createdon, comment)        
         # red_flag_records.append(red_flag_record.incident_to_dictionary())
         # return jsonify({"data": red_flag_record.incident_to_dictionary()})
+        if request.content_type != 'application/json':
+            return jsonify({ "status": "404", "message": "Change content_type to json" })
 
         data = request.get_json()
         global count
@@ -36,11 +37,30 @@ class CreateRedFlagMap(MethodView):
             createdon = date.today(),
             comment = data['comment']
         )
-        if data['createdBy'] == "":
-            return jsonify({"status": 405, "message": "not allowed"})
+
+        # if red_flag_record.caseType != "redflag" or red_flag_record.caseType != "intervention":
+        #     return jsonify({"status": 400, "message": "Only redflag or intervention incidents are supported here"}), 400
+
+        if not red_flag_record.createdBy or not red_flag_record.caseType or not red_flag_record.location or not red_flag_record.status or not red_flag_record.comment:
+            return jsonify({
+                "status": 400,
+                "message": "No specified field can be left open(bad request)"
+            }), 400
+        if not isinstance(red_flag_record.comment, str):
+            return jsonify({
+                "status": 400,
+                "message": "The comment should be of type string"
+            }), 400
+
+        if not isinstance(red_flag_record.createdBy, str):
+            return jsonify({
+                "status": 400,
+                "message": "The username should be of type string"
+            }), 400
+
 
         red_flag_records.append(red_flag_record.incident_to_dictionary())
-        return jsonify({"data": red_flag_record.incident_to_dictionary()})
+        return jsonify({"status": 200, "message": "success" , "data" : red_flag_record.incident_to_dictionary()}), 200
 
 class GetAllCorruptionMap(MethodView):
 
