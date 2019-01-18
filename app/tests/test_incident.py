@@ -4,7 +4,6 @@ from app import app
 import json
 
 class TestOneRedFlag(BaseTest):
-    # pass
     def test_create_incident(self):
         data = {
             "createdBy": "w",
@@ -15,7 +14,6 @@ class TestOneRedFlag(BaseTest):
             "comment": "too early to steal"
         }
         response = self.client.post('/api/v1/redflagrecords', content_type = 'application/json', data = json.dumps(data))
-        # data =  json.loads(response.data)
         self.assertEqual(response.status_code,200)
 
     def test_create_wrong_incident(self):

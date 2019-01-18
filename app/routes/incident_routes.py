@@ -2,10 +2,6 @@ from app.views.incident_views import (CreateRedFlagMap, GetAllCorruptionMap, Get
 EditStatusMap, EditLocationMap)
 from app import app
 
-# route_url_index = CreateRedFlagMap.as_view('index')
-# app.add_url_rule('/',
-#                     view_func=route_url_index, methods=['GET',])
-
 route_url_create = CreateRedFlagMap.as_view('create')
 app.add_url_rule('/api/v1/redflagrecords',
                     view_func=route_url_create, methods=['POST',])
