@@ -66,7 +66,7 @@ class GetOneCorruptionMap(MethodView):
 
 class DeleteRedFlag(MethodView):
     
-     def delete(self, id):
+    def delete(self, id):
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
