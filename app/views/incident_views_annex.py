@@ -43,14 +43,22 @@ class IncidentViewMap(MethodView):
         red_flag_records.append(red_flag_record.incident_to_dictionary())
         return jsonify({"status": 200, "message": "Created red-flag record" , "data" : [red_flag_record.incident_to_dictionary()]}), 200
 
-    def get(self):
+    def get(self, id= None):
         """
             retrieve incidents or an incident as defined by the url
         """
-        if len(red_flag_records) ==0:
-            return jsonify({"status": 200, "message": "Your API is working well but we did not find any records that match your request"})
-        else:
-            return jsonify({"status": 404, "data": [red_flag_records]})
+        if id:
+            get_one = [flag.__dict__ for flag in red_flag_records if flag['id'] ==id ]
+            return jsonify({"message":"success", "data": get_one})
+            # for record in range(len(red_flag_records)):
+            #     if red_flag_records[record]["id"] == id:
+            #         return jsonify({"status": 200, "data": red_flag_records[record]}), 200
+            #     elif red_flag_records[record]["id"] != id:
+            #         return jsonify({"status": 404, "message": "Red flag was not found"}), 404
+            #     elif record == (len(red_flag_records) -1):
+            #         return jsonify({"status": 404, "message": "Red flag was not found"}), 404
+
+        return jsonify({"data": red_flag_records})
 
     def delete(self, id):
         """

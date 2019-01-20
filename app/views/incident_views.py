@@ -2,8 +2,6 @@ from . import *
 """
     creating a red flag incident
 """
-def json_fetcher():
-    return request.get_json()
 
 
 class CreateRedFlagMap(MethodView):
@@ -12,8 +10,7 @@ class CreateRedFlagMap(MethodView):
         if request.content_type != 'application/json':
             return jsonify({ "status": "404", "message": "Change content_type to json" })
         
-        data = json_fetcher()
-        # data = request.get_json()
+        data = request.get_json()
         global count
 
         count +=1
@@ -78,8 +75,7 @@ class DeleteRedFlag(MethodView):
 class EditStatusMap(MethodView):
 
     def put(self, id):
-        data = json_fetcher()
-        # record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        data  =  request.get_json()
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
@@ -91,8 +87,7 @@ class EditStatusMap(MethodView):
 class EditLocationMap(MethodView):
 
     def put(self, id):
-        data = json_fetcher()
-        # record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        data  =  request.get_json()
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
@@ -105,8 +100,7 @@ class EditLocationMap(MethodView):
 class EditCommentMap(MethodView):
 
     def put(self, id):
-        data = json_fetcher()
-        # record = next(filter(lambda x: x['id'] == id, red_flag_records), None)
+        data  =  request.get_json()
         if len(red_flag_records) <1:
             return jsonify({"status":404,"message":"Not Found"  }),404    
         for record in range(len(red_flag_records)):
