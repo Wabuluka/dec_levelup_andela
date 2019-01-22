@@ -1,0 +1,7 @@
+venv/
+*.pyc
+.pytest_cache/*
+.vscode
+__pycache__/
+htmlcov/*
+**/__pycache__/*
