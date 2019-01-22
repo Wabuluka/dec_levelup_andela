@@ -35,3 +35,11 @@ class IncidentViewMap(MethodView):
     def delete(self, id):
         incidentmodel.delete_incident(id)
         return jsonify({"status": 200, "message": "Deleted "})
+
+    def patch_comment(self, id):
+        patched_comment = data[incidentmodel.patch_comment_intervention(id, comment)]
+        return jsonify({"status": 200,"data": [patched_comment] })
+
+    def patch_location(self, id):
+        patched_location = data[incidentmodel.patch_comment_intervention(id, location)]
+        return jsonify({"status": 200,"data": [patched_location] })

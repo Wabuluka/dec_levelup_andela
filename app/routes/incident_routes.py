@@ -47,11 +47,11 @@ app.add_url_rule('/api/v1/intervention/<int:id>',defaults = None,
 
 intervention_url = InterventionViewMap.as_view('patch_comment_intervention')
 app.add_url_rule('/api/v1/intervention/<int:id>/comment',defaults = None, 
-                    view_func=intervention_url, methods=['PATCH',])
+                    view_func=intervention_url, methods=['PUT',])
 
 intervention_url = InterventionViewMap.as_view('patch_location_intervention')
 app.add_url_rule('/api/v1/intervention/<int:id>/location',defaults = None, 
-                    view_func=intervention_url, methods=['PATCH',])
+                    view_func=intervention_url, methods=['PUT',])
 
 
 

@@ -1,6 +1,7 @@
 from app.models.db_conn import DatabaseConnection
 import datetime
 import json
+import re
 
 cursor = DatabaseConnection().cursor
 
@@ -42,5 +43,10 @@ class UserModel:
     
 
     def get_userby_email(self , email):
-        cursor.execute("SELECT * FROM users WHERE email = %s", (email))
+        cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
         return cursor.fetchone()
+
+
+    """
+        Validators for the user sign up
+    """    

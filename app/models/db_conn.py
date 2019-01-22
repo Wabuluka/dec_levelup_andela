@@ -69,21 +69,12 @@ class DatabaseConnection:
         except Exception as error:
             print(f"error: {error}")
 
-        # self.cursor.execute("SELECT * FROM users WHERE email= '{}'".format("admin@gmail.com"))
-        # if self.cursor.fetchone():
-        #     return None
-        # # set admin user
-        # sql = "INSERT INTO users(username, email, password, role) VALUES('admin', 'admin@gmail.com', '{}', True)"
-
-        # self.cursor.execute(sql)
-        # self.connection.commit()
-
     """
     method to drop tables being used in my tests
     """
     def drop_tables(self):
         query = "DROP TABLE IF EXISTS {} CASCADE"
-        tabl_names = ["parcel, users"]
+        tabl_names = ["users, intervention, redflag"]
         for name in tabl_names:
             self.cursor.execute(query.format(name))
 

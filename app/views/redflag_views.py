@@ -6,7 +6,8 @@ from . import *
 incidentmodel = CorruptionCase()
 
 class IncidentViewMap(MethodView):
-     
+
+    @jwt_required
     def post(self):
         # if request.content_type != 'application/json':
         #     return jsonify({ "status": "404", "message": "Change content_type to json" })
@@ -25,6 +26,7 @@ class IncidentViewMap(MethodView):
         incidentmodel.create_incident(new_record)
         return jsonify({"status": 200, "message": "Created success"})
 
+    @jwt_required
     def get(self, id = None):
         if id:
             get_one = incidentmodel.get_one_incident(id)
@@ -32,10 +34,12 @@ class IncidentViewMap(MethodView):
         get_all = incidentmodel.get_all_incidents()
         return jsonify({"status": 200, "data":[get_all]})
 
+    @jwt_required
     def delete(self, id):
         incidentmodel.delete_incident(id)
         return jsonify({"status": 200, "message": "Deleted "})
 
+    @jwt_required
     def patch(self, id, comment, location):
         data = request.get_json()
         if comment:
