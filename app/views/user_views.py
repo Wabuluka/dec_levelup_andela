@@ -13,10 +13,12 @@ class CreateNewUser(MethodView):
           lastname = data['lastname'],
           othername = data['othernames'],
           email = data['email'],
-        #   phonenumber = data['phonenumber'],
+          phonenumber = data['phonenumber'],
           username = data['username'],
-        #   registeredOn = data['registeredOn'],
-        #   isAdmin = data['isAdmin']
+          registeredOn = data['registeredOn'],
+          isAdmin = data['isAdmin']
         )
         users.append(user.usr_dictionary())
         return jsonify({"data": user.usr_dictionary()})
+
+    
