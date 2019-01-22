@@ -25,7 +25,7 @@ class IncidentViewMap(MethodView):
         incidentmodel.create_incident(new_record)
         return jsonify({"status": 200, "message": "Created success"})
 
-    def get(self, id=None):
+    def get(self, id = None):
         if id:
             get_one = incidentmodel.get_one_incident(id)
             return jsonify({"status": 200, "data":[get_one]})
@@ -35,3 +35,12 @@ class IncidentViewMap(MethodView):
     def delete(self, id):
         incidentmodel.delete_incident(id)
         return jsonify({"status": 200, "message": "Deleted "})
+
+    def patch(self, id, comment, location):
+        data = request.get_json()
+        if comment:
+            patched_comment = data[incidentmodel.patch_comment(id, comment)]
+            return jsonify({"status": 200,"data": [patched_comment] })
+        elif location:
+            patched_location = incidentmodel.patch_location(id, location)
+            return jsonify({"status": 200, "data": [patched_location]})

@@ -2,5 +2,8 @@ from app.views.user_views import CreateNewUser
 from app import app
 
 route_url_create_new_user = CreateNewUser.as_view('new_user')
-app.add_url_rule('/api/v1/user',
+app.add_url_rule('/api/v2/auth/signup',
                  view_func=route_url_create_new_user, methods=['POST',])
+
+app.add_url_rule('/api/v2/auth/signin',
+                 view_func=route_url_create_new_user, methods=['POST','GET'])
