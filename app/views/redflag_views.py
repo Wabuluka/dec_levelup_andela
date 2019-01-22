@@ -24,10 +24,3 @@ class IncidentViewMap(MethodView):
 
         incidentmodel.create_incident(new_record)
         return jsonify({"status": 200, "message": "Created success"})
-
-    def get(self, id=None):
-        if id:
-            get_one = incidentmodel.get_one_incident(id)
-            return jsonify({"status": 200, "data":[get_one]})
-        get_all = incidentmodel.get_all_incidents()
-        return jsonify({"status": 200, "data":[get_all]})
