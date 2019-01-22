@@ -31,3 +31,7 @@ class IncidentViewMap(MethodView):
             return jsonify({"status": 200, "data":[get_one]})
         get_all = incidentmodel.get_all_incidents()
         return jsonify({"status": 200, "data":[get_all]})
+
+    def delete(self, id):
+        incidentmodel.delete_incident(id)
+        return jsonify({"status": 200, "message": "Deleted "})
