@@ -14,7 +14,14 @@ class BaseTest(unittest.TestCase):
     def setUp(self):
         self.app = app
         self.client = self.app.test_client()
+    #     cursor = DatabaseConnection()
+    #     cursor.
 
+        
+    # def tearDown(self):
+    #     with self.app as app:
+    #         cursor = DatabaseConnection()
+    #         cursor.drop_tables()
     
 
 
