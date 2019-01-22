@@ -1,5 +1,5 @@
 from app.views.redflag_views import IncidentViewMap
-# from app.views.intervention_views import InterventionViewMap
+from app.views.intervention_views import InterventionViewMap
 from app import app
 
 # endpoints for the redflag incident
@@ -28,27 +28,39 @@ app.add_url_rule('/api/v1/red-flags/<int:id>/location',defaults = None,
                     view_func=route_url_edit_location, methods=['PATCH',])
 
 
+# endpoints for the intervvention incident
+intervention_url = InterventionViewMap.as_view('create_intervention')
+app.add_url_rule('/api/v1/intervention',
+                    view_func=intervention_url, methods=['POST',])
 
-# intervention_url = InterventionViewMap.as_view('create_intervention')
-# app.add_url_rule('/api/v1/intervention',
-#                     view_func=intervention_url, methods=['POST',])
+intervention_url = InterventionViewMap.as_view('get_all_interventions')
+app.add_url_rule('/api/v1/intervention', defaults = None, 
+                    view_func=intervention_url, methods=['GET',])
 
-# intervention_url = InterventionViewMap.as_view('get_all_interventions')
-# app.add_url_rule('/api/v1/intervention', defaults = None, 
-#                     view_func=intervention_url, methods=['GET',])
+intervention_url = InterventionViewMap.as_view('get_one_intervention')
+app.add_url_rule('/api/v1/intervention/<int:id>',defaults = None, 
+                    view_func=intervention_url, methods=['GET',])
 
-# intervention_url = InterventionViewMap.as_view('get_one_intervention')
-# app.add_url_rule('/api/v1/intervention/<int:id>',defaults = None, 
-#                     view_func=intervention_url, methods=['GET',])
+intervention_url = InterventionViewMap.as_view('delete_one_intervention')
+app.add_url_rule('/api/v1/intervention/<int:id>',defaults = None, 
+                    view_func=intervention_url, methods=['DELETE',])
 
-# intervention_url = InterventionViewMap.as_view('delete_one_intervention')
-# app.add_url_rule('/api/v1/intervention/<int:id>',defaults = None, 
-#                     view_func=intervention_url, methods=['DELETE',])
+intervention_url = InterventionViewMap.as_view('patch_comment_intervention')
+app.add_url_rule('/api/v1/intervention/<int:id>/comment',defaults = None, 
+                    view_func=intervention_url, methods=['PATCH',])
 
-# intervention_url = InterventionViewMap.as_view('patch_comment_intervention')
-# app.add_url_rule('/api/v1/intervention/<int:id>/comment',defaults = None, 
-#                     view_func=intervention_url, methods=['PATCH',])
+intervention_url = InterventionViewMap.as_view('patch_location_intervention')
+app.add_url_rule('/api/v1/intervention/<int:id>/location',defaults = None, 
+                    view_func=intervention_url, methods=['PATCH',])
 
-# intervention_url = InterventionViewMap.as_view('patch_location_intervention')
-# app.add_url_rule('/api/v1/intervention/<int:id>/location',defaults = None, 
-#                     view_func=intervention_url, methods=['PATCH',])
+
+
+# route_url_edit_location = EditLocationMap.as_view('edit_location')
+# app.add_url_rule('/api/v1/redflagrecords/edit-location/<int:id>',defaults = None, 
+#                     view_func=route_url_edit_location, methods=['PUT',])
+
+
+# route_url_edit_comment = EditLocationMap.as_view('edit_comment')
+# app.add_url_rule('/api/v1/redflagrecords/edit-comment/<int:id>',defaults = None, 
+#                     view_func=route_url_edit_comment, methods=['PUT',])
+
