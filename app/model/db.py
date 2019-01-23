@@ -58,10 +58,10 @@ class DatabaseConnection:
                                                    port='5432', cursor_factory=RealDictCursor)
             else:
                 print('Connecting development db')
-                self.connection = psycopg2.connect(dbname='ireporter_db',
-                                                   user='postgres',
-                                                   password='123',
-                                                   host='localhost',
+                self.connection = psycopg2.connect(dbname='d9i1p4t891ns2s',
+                                                   user='postgres://lhyjuqrulrbpqw',
+                                                   password='f750b71574f10d8c909284641d274c112eb54f298894082e5df79f1479056297',
+                                                   host='ec2-54-227-246-152.compute-1.amazonaws.com',
                                                    port='5432', cursor_factory=RealDictCursor)
             self.connection.autocommit = True
             self.cursor = self.connection.cursor()
