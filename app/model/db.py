@@ -47,7 +47,7 @@ class DatabaseConnection:
         )
         try:
             if os.getenv("FLASK_ENV") == "production":
-                self.connection = psycopg2.connect(os.getenv("DATABASE_URL"), cursor_factory=RealDictCursor)
+                self.connection = psycopg2.connect(os.getenv("postgres://lhyjuqrulrbpqw:f750b71574f10d8c909284641d274c112eb54f298894082e5df79f1479056297@ec2-54-227-246-152.compute-1.amazonaws.com:5432/d9i1p4t891ns2s"), cursor_factory=RealDictCursor)
 
             elif os.getenv("FLASK_ENV") == "TESTING":
                 print('Connecting to test db')
