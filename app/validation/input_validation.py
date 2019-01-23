@@ -9,12 +9,12 @@ def validate_user_details(firstname, lastname, othernames, email, phonenumber, u
     valid_email = validate_email(email)
     if not valid_email:
         return jsonify({
-            "message": "Please use a valid email address for example nich@gmail.com"
+            "message": "Please use a valid email address for example yourname@company.com"
         }), 400
 
 
     if not isinstance(firstname, str) or not isinstance(lastname, str) or not isinstance(othernames, str) or not isinstance(username, str):
-        return jsonify({"message":"string needed here"})
+        return jsonify({"message": "string needed here"})
 
 
 

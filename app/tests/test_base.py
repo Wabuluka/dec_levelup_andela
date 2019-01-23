@@ -2,7 +2,13 @@ import unittest
 from app import app
 from app.models.corrupt_model import CorruptionCase
 from app.models.usr_model import UserModel
+from app.models.db_conn import DatabaseConnection
 import json
+"""
+export FLASK_ENV=TESTING
+echo $FLASK_ENV
+"""
+
 
 corruptioncasemodel = CorruptionCase()
 usermodel = UserModel()
@@ -14,8 +20,8 @@ class BaseTest(unittest.TestCase):
     def setUp(self):
         self.app = app
         self.client = self.app.test_client()
-    #     cursor = DatabaseConnection()
-    #     cursor.
+        db = DatabaseConnection()
+        # db.create_tables()
 
         
     # def tearDown(self):
