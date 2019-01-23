@@ -22,23 +22,27 @@ def create_redflag():
     new_record = RedFlag(createdby=createdby, casetype=casetype, location=location, status=status, comment=comment)
 
     redflagmodel.create_redflag(new_record)
-    return jsonify({"status": 200, "message": "Created success"})
+    return jsonify({"status": 201, "message": "Created success"}), 201
 
 
 @redflag.route('/red-flags', methods=["GET"])
 def get_all():
     get_all = redflagmodel.get_all()
-    return jsonify({"status": 200, "data":[get_all]})
+    if get_all:
+        return jsonify({"status": 200, "message":"success", "data":[get_all]})
+    return jsonify({"message":"there are no redflags"})
 
 @redflag.route('/red-flags/<int:id>', methods=["GET"])
 def get_one(id):
     get_one = redflagmodel.get_one(id)
-    return jsonify({"status": 200, "data":[get_one]})
+    if get_one:
+        return jsonify({"status": 200, "message":"success", "data":[get_one]}), 200
+    return jsonify({"message":"first post redflags"}), 404
 
 @redflag.route('/red-flags/<int:id>', methods=["DELETE"])
 def delete_one(id):
     redflagmodel.delete_one(id)
-    return jsonify({"status": 200, "message": "Deleted "})
+    return jsonify({"status": 200, "message": "Deleted"})
 
 @redflag.route('/red-flags/<int:id>/location', methods = ["PATCH"])
 def edit_location(id):
@@ -49,7 +53,7 @@ def edit_location(id):
         return jsonify({"status": 200,"data": location, "message": "Updated intervention location" })
     return jsonify({"status": 400, "Error": "Failed redflag location" }),400
 
-@redflag.route('/red-flags/<int:id>/comment', methods = ["PATCH"])
+@redflag.route('/red-flags/<int:id>/comment', methods=["PATCH"])
 def edit_comment(id):
     data = request.get_json()
     comment = data["comment"]
