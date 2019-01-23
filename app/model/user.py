@@ -1,4 +1,5 @@
-from app.models.db_conn import DatabaseConnection
+from app.model.db import DatabaseConnection
+from flask import request
 import datetime
 import json
 import re
@@ -20,33 +21,23 @@ class UserModel:
         self.isAdmin = kwargs.get("isAdmin")
         self.password = kwargs.get("password")
 
-    # convert user attributes to a dictionary
-    def usr_dictionary(self):
-        return {
-            "userid" : self.userid,
-            "firstname": self.firstname,
-            "lastname": self.lastname,
-            "othernames": self.othernames,
-            "email":self.email, 
-            "phoneNumber":self.phonenumber, 
-            "username":self.username,
-            "registeredOn":self.registeredOn.date.today(),
-            "isAdmin":self.isAdmin,
-            "password": self.password
-        }
 
+    # sign up query
     def create_user(self, user):
         cursor.execute("INSERT INTO users(firstname, lastname, othernames, email, phonenumber, username, password )"
                             " VALUES(%s,%s,%s,%s, %s,%s, %s)", (user.firstname, user.lastname, user.othernames,
                                                                 user.email, user.phonenumber, user.username, user.password
                                                                 ))
     
-
+    # login query
     def get_userby_email(self , email):
         cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
         return cursor.fetchone()
 
+    # def 
 
-    """
-        Validators for the user sign up
-    """    
+"""
+    Validators for the user sign up
+"""
+class UserValidation:
+    pass

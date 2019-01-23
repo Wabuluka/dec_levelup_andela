@@ -1,22 +1,22 @@
 
 --------------------------------------------------------------------------------------------------------------------
         url structure for the iReporter API
-POST red-flag                               api/v2/red-flags
-GET red-flag                                api/v2/red-flags
-GET a red-flag                              api/v2/red-flags/<int:id>
-PATCH a red-flag-comment                    api/v2/red-flags/<int:id>/comment
-PATCH a red-flag-location                   api/v2/red-flags/<int:id>/location
-DELETE a red-flag                           api/v2/red-flags/<int:id>
+POST red-flag                               api/v2/red-flags ..
+GET red-flag                                api/v2/red-flags ..
+GET a red-flag                              api/v2/red-flags/<int:id> ..
+PATCH a red-flag-comment                    api/v2/red-flags/<int:id>/comment ..
+PATCH a red-flag-location                   api/v2/red-flags/<int:id>/location ..
+DELETE a red-flag                           api/v2/red-flags/<int:id> ..
 
-POST intervention                           api/v2/interventions
-GET red-flag                                api/v2/interventions
-GET a intervention                          api/v2/interventions/<int:id>
-PATCH a intervention-comment                api/v2/interventions/<int:id>/comment
-PATCH a intervention-location               api/v2/interventions/<int:id>/location
-DELETE a intervention                       api/v2/interventions/<int:id>
+POST intervention                           api/v2/interventions ..
+GET intervention                            api/v2/interventions ..
+GET a intervention                          api/v2/interventions/<int:id> ..
+PATCH a intervention-comment                api/v2/interventions/<int:id>/comment ..
+PATCH a intervention-location               api/v2/interventions/<int:id>/location ..
+DELETE a intervention                       api/v2/interventions/<int:id> ..
 
-POST user sign up                           api/v2/auth/signup
-POST user log in                            api/v2/auth/sigin
+POST user sign up                           api/v2/auth/signup ..
+POST user log in                            api/v2/auth/sigin ..
 
 PATCH admin edit status                     api/v2/admin/red-flags/<int:id>/status
 PATCH admin edit status                     api/v2/admin/interventions/<int:id>/status
