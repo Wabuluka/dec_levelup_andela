@@ -34,7 +34,18 @@ class UserModel:
         cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
         return cursor.fetchone()
 
-    # def 
+    # edit redflag status
+    # edits a location of the incident regardless of the casetype
+    def patch_redflag_status(self, id, status):
+        self.cursor.execute(f"UPDATE redflag SET status='{status}' WHERE id = {id}")
+        return True
+
+
+    # edit intervention status
+    # edits a location of the incident regardless of the casetype
+    def patch_intervention_status(self, id, status):
+        self.cursor.execute(f"UPDATE intervention SET status='{status}' WHERE id = {id}")
+        return True
 
 """
     Validators for the user sign up
