@@ -1,18 +1,16 @@
-from flask import Flask
-from flask_jwt_extended import JWTManager
+from flask import Flask, Blueprint
+
+
 
 app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = 'daviesyoooo'
-JWTManager(app)
+app.config.from_object('config')
 
+from app.views.user import user
+from app.views.redflag import redflag
+from app.views.intervention import intervention
+from app.views.admin import admin
 
-from app.routes.incident_routes import route_url_create
-from app.routes.incident_routes import route_url_get_all
-from app.routes.incident_routes import route_url_get_one
-from app.routes.incident_routes import route_url_delete_one
-from app.routes.incident_routes import route_url_edit_comment
-from app.routes.incident_routes import route_url_edit_location
-from app.routes.incident_routes import intervention_url
-
-from app.routes.user_routes import route_url_create_new_user
-from app.routes.user_routes import route_url_signin
+app.register_blueprint(user, url_prefix = '/api/v2/auth/')
+app.register_blueprint(redflag, url_prefix = '/api/v2/')
+app.register_blueprint(intervention, url_prefix = '/api/v2/')
+app.register_blueprint(admin, url_prefix = '/api/v2/admin/api/v2/')
