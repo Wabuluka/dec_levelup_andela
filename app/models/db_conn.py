@@ -28,7 +28,8 @@ class DatabaseConnection:
                     createdon TIMESTAMP DEFAULT NOW(),
                     location VARCHAR(20) NOT NULL,
                     status VARCHAR(50) NOT NULL,
-                    comment VARCHAR(50) NOT NULL
+                    comment VARCHAR(50) NOT NULL,
+                    userid INT REFERENCES users(userid)
                 )
             """,
             """
@@ -39,7 +40,8 @@ class DatabaseConnection:
                     createdon TIMESTAMP DEFAULT NOW(),
                     location VARCHAR(20) NOT NULL,
                     status VARCHAR(50) NOT NULL,
-                    comment VARCHAR(50) NOT NULL
+                    comment VARCHAR(50) NOT NULL,
+                    userid INT REFERENCES users(userid)
                 )
             """
         )
