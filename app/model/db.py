@@ -53,7 +53,7 @@ class DatabaseConnection:
                 print('Connecting to test db')
                 self.connection = psycopg2.connect(dbname='ireporter_test_db',
                                                    user='postgres',
-                                                   password='123',
+                                                   password='',
                                                    host='localhost',
                                                    port='5432', cursor_factory=RealDictCursor)
             else:
