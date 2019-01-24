@@ -1,11 +1,13 @@
 from flask import Blueprint, request, jsonify
 from app.model.redflag import RedFlag
+from app.utilities.helpers import token_required
 
 redflagmodel = RedFlag()
 
 redflag = Blueprint('redflag', __name__)
 
 @redflag.route('/red-flags', methods=['POST'])
+@token_required
 def create_redflag():
     if request.content_type != 'application/json':
         return jsonify({ "status": "404", "message": "Change content_type to json" })
@@ -26,6 +28,7 @@ def create_redflag():
 
 
 @redflag.route('/red-flags', methods=["GET"])
+@token_required
 def get_all():
     get_all = redflagmodel.get_all()
     if get_all:
@@ -33,6 +36,7 @@ def get_all():
     return jsonify({"message":"there are no redflags"})
 
 @redflag.route('/red-flags/<int:id>', methods=["GET"])
+@token_required
 def get_one(id):
     get_one = redflagmodel.get_one(id)
     if get_one:
@@ -40,11 +44,13 @@ def get_one(id):
     return jsonify({"message":"first post redflags"}), 404
 
 @redflag.route('/red-flags/<int:id>', methods=["DELETE"])
+@token_required
 def delete_one(id):
     redflagmodel.delete_one(id)
     return jsonify({"status": 200, "message": "Deleted"})
 
 @redflag.route('/red-flags/<int:id>/location', methods = ["PATCH"])
+@token_required
 def edit_location(id):
     data = request.get_json()
     location = data["location"]
@@ -54,6 +60,7 @@ def edit_location(id):
     return jsonify({"status": 400, "Error": "Failed redflag location" }),400
 
 @redflag.route('/red-flags/<int:id>/comment', methods=["PATCH"])
+@token_required
 def edit_comment(id):
     data = request.get_json()
     comment = data["comment"]
