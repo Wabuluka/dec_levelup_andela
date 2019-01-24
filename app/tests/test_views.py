@@ -99,11 +99,48 @@ class TestEndpoints(unittest.TestCase):
     #     response_data = json.loads(request_data.data.decode())
     #     self.assertEqual(request_data.status_code, 200)
     #     self.assertIn(response_data['message'], 'Deleted')
+    def create_intervention(self,casetype, createdby, title, location, comment, status):
+        post_data = self.app.post(
+            '/api/v2/interventions',
+            data=json.dumps(dict(
+                casetype=casetype,
+                comment=comment,
+                createdby=createdby,
+                title=title,
+                location=location,
+                status=status
+            )),
+            content_type='application/json'
+        )
+        return post_data
+    def test_add_intervention(self):
+        post = self.create_intervention('redflag','bill','opm-office','workers house','pension','pending')
+        response = json.loads(post.data.decode())
+        self.assertIn(response['message'], 'Created success')
+        self.assertEqual(post.status_code, 200)        
 
+    def test_get_all_interventions(self):
+        post = self.create_intervention('redflag','bill','opm-office','workers house','pension','pending')
         
-
+        request_data = self.app.get('/api/v2/interventions')
+        response_data = json.loads(request_data.data.decode())
+        # self.assertEqual(request_data.status_code, 200)
+        self.assertIn(response_data['message'], 'success')
+        self.assertTrue(response_data['status'], 200)
+        self.assertTrue(response_data['data'])
         
+    def test_get_specific_intervention(self):
+        post = self.create_intervention('redflag','bill','opm-office','workers house','pension','pending')
         
+        request_data = self.app.get('/api/v2/interventions/1')
+        response_data = json.loads(request_data.data.decode())
+        self.assertEqual(request_data.status_code, 200)
+        self.assertIn(response_data['message'], 'success')
+        self.assertTrue(response_data['status'], 200)
+        self.assertTrue(response_data['data'])
 
-
-
+    def test_get_all_interventions_not_existing(self):
+        request_data = self.app.get('/api/v2/interventions')
+        response_data = json.loads(request_data.data.decode())
+        self.assertEqual(request_data.status_code, 404)
+        self.assertIn(response_data['message'], 'there are no interventions')

@@ -20,17 +20,21 @@ def create_intervention():
     new_record = Intervention(createdby=createdby, casetype=casetype, location=location, status=status, comment=comment)
 
     interventionmodel.create_intervention(new_record)
-    return jsonify({"status": 200, "message": "Created success"})
+    return jsonify({"status": 200, "message": "Created success"}),200
 
 @intervention.route('/interventions', methods=["GET"])
 def get_all():
     get_all = interventionmodel.get_all()
-    return jsonify({"status": 200, "data":[get_all]})
+    if get_all:
+        return jsonify({"status": 200, "message": "success", "data":[get_all]}),200
+    return jsonify({"status": 404, "message": "there are no interventions"}),404
 
 @intervention.route('/interventions/<int:id>', methods=["GET"])
 def get_one(id):
-    get_one = interventionmodel.get_one(id)
-    return jsonify({"status": 200, "data":[get_one]})
+    if id:
+        get_one = interventionmodel.get_one(id)
+        return jsonify({"status": 200, "message": "success","data":[get_one]}),200
+    return jsonify({"status": 404, "message": "not found"}),404
 
 @intervention.route('/interventions/<int:id>', methods=["DELETE"])
 def delete_one(id):
