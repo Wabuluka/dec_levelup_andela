@@ -82,11 +82,11 @@ class TestEndpoints(unittest.TestCase):
         self.assertEqual(request_data.status_code, 200)
         self.assertIn(response_data['message'], 'Deleted')
 
-    def test_edit_comment_not_existing(self):
-        post = self.create_record('redflag','bill','opm-office','workers house','pension','pending')
+    # def test_edit_comment_not_existing(self):
+    #     post = self.create_record('redflag','bill','opm-office','workers house','pension','pending')
 
-        request_data = self.app.patch('/api/v2/red-flags/100/comment')
-        response_data = json.loads(request_data.data.decode())
+    #     request_data = self.app.patch('/api/v2/red-flags/100/comment')
+    #     response_data = json.loads(request_data.data.decode())
         # self.assertEqual(request_data.status_code, 200)
         # self.assertIn(response_data['message'], 'Deleted')
 
