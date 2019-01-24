@@ -113,6 +113,8 @@ class TestEndpoints(unittest.TestCase):
             content_type='application/json'
         )
         return post_data
+
+
     def test_add_intervention(self):
         post = self.create_intervention('redflag','bill','opm-office','workers house','pension','pending')
         response = json.loads(post.data.decode())
@@ -144,3 +146,29 @@ class TestEndpoints(unittest.TestCase):
         response_data = json.loads(request_data.data.decode())
         self.assertEqual(request_data.status_code, 404)
         self.assertIn(response_data['message'], 'there are no interventions')
+
+    def create_user(self,firstname,lastname,othernames,email,phonenumber,registeredOn,username,isAdmin,location,password,status):
+        post_data = self.app.post(
+            '/api/v2/auth/signup',
+            data=json.dumps(dict(
+                firstname= firstname,
+                lastname=lastname,
+                othernames=othernames,
+                email = email,
+                phonenumber = phonenumber,
+                registeredOn = registeredOn,
+                username = username,
+                isAdmin = isAdmin,
+                location=location,
+                password = password,
+                status=status
+            )),
+            content_type='application/json'
+        )
+        return post_data
+
+    def test_signup(self):
+        post = self.create_user('redflag','bill','opm-office','workers house', 1213232424,'pending','dsdvdfdsfsd','sdfdfdfd','sddfdfdfd','ddsdsdd','sdssds')
+        response = json.loads(post.data.decode())
+        self.assertIn(response['message'], 'Created success')
+        self.assertEqual(post.status_code, 200)
