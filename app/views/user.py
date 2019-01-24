@@ -1,25 +1,26 @@
 from flask import Blueprint, request, jsonify
-import jwt
-import datetime
-from functools import wraps
+# import jwt
+# import datetime
+# from functools import wraps
+from app.utilities.helpers import create_token
 from app.model.user import UserModel
 
 user = Blueprint('users', __name__)
 usermodel = UserModel()
 
-def token_req(end_point):
-    @wraps(end_point)
-    def check(*args, **kwargs):
-        if 'token' in request.headers:
-            tk = request.headers['token']
-        else:
-            return jsonify({'message': 'you should login'})
-        try:
-            jwt.decode(tk, 'jghbjg_scretekey')
-        except:
-            return jsonify({'message': 'user not authenticated'})
-        return end_point(*args, **kwargs)
-    return check
+# def token_req(end_point):
+#     @wraps(end_point)
+#     def check(*args, **kwargs):
+#         if 'token' in request.headers:
+#             tk = request.headers['token']
+#         else:
+#             return jsonify({'message': 'you should login'})
+#         try:
+#             jwt.decode(tk, 'jghbjg_scretekey')
+#         except:
+#             return jsonify({'message': 'user not authenticated'})
+#         return end_point(*args, **kwargs)
+#     return check
 
 @user.route('/signup', methods=["POST"])
 def create_user():
@@ -50,15 +51,15 @@ def signin_user():
     check_user = usermodel.get_userby_email(email)
     # print(chech_user)
     if not check_user:
-        return jsonify({"message":"first signup"})
+        return jsonify({"message":"Invalid email or password"})
     check_psw = check_user['password']
-    if check_psw:
-
-        tk = jwt.encode({
-            'username': user['username'],
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=10)}, 'jghbjg_scretekey')
+    if check_psw == password:
+        token = create_token(email)
+        # tk = jwt.encode({
+        #     'username': user['username'],
+        #     'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=10)}, 'jghbjg_scretekey')
         
-        return jsonify({"message": "you are now logged in", 'token': tk.decode('UTF-8')})
+        return jsonify({"message": "you are now logged in", "token": token})
 
     return jsonify({"message": "first loggin"})
 
