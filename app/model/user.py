@@ -58,18 +58,9 @@ class Validation:
             and phonenumber == "" and password == "":
             return jsonify({"message": "fields cant be  empty"}), 400
 
-        # valid_email = validate_email(email)
-        # if not valid_email:
-        #     return jsonify({
-        #         "error": "Please use a valid email address for example nich@gmail"
-        #     }), 400
 
         if not firstname.isalpha() or not lastname.isalpha():
             return jsonify({
                 "error": "First and last name should only be alphabets"
             }), 400
 
-        # if not isinstance(['phonenumber'], int):
-        #     return jsonify({"message":"phonenumber should be an interger"}), 400
-
-    

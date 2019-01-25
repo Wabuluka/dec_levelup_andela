@@ -93,7 +93,7 @@ class TestEndpoints(unittest.TestCase):
         self.assertTrue(response_data['data'])
 
     def test_get_all_redflags_not_existing(self):
-        request_data = self.app.get('/api/v2/red-flags', headers={"token": self.generated_token},)
+        request_data = self.app.get('/api/v2/red-flags', headers={"token": self.generated_token})
         response_data = json.loads(request_data.data.decode())
         self.assertEqual(request_data.status_code, 200)
         self.assertIn(response_data['message'], 'there are no redflags')
@@ -101,7 +101,7 @@ class TestEndpoints(unittest.TestCase):
     def test_get_specific_redflags(self):
         post = self.create_record('redflag','bill','opm-office','workers house','pension','pending')
         
-        request_data = self.app.get('/api/v2/red-flags/1', headers={"token": self.generated_token},)
+        request_data = self.app.get('/api/v2/red-flags/1', headers={"token": self.generated_token})
         response_data = json.loads(request_data.data.decode())
         self.assertEqual(request_data.status_code, 200)
         self.assertIn(response_data['message'], 'success')
@@ -144,7 +144,7 @@ class TestEndpoints(unittest.TestCase):
     #     self.assertIn(response_data['message'], 'Deleted')
     def create_intervention(self,casetype, createdby, title, location, comment, status):
         post_data = self.app.post(
-            '/api/v2/interventions',
+            '/api/v2/interventions', headers={"token": self.generated_token},
             data=json.dumps(dict(
                 casetype=casetype,
                 comment=comment,
@@ -167,7 +167,7 @@ class TestEndpoints(unittest.TestCase):
     def test_get_all_interventions(self):
         post = self.create_intervention('redflag','bill','opm-office','workers house','pension','pending')
         
-        request_data = self.app.get('/api/v2/interventions', headers={"token": self.generated_token},)
+        request_data = self.app.get('/api/v2/interventions', headers={"token": self.generated_token})
         response_data = json.loads(request_data.data.decode())
         # self.assertEqual(request_data.status_code, 200)
         self.assertIn(response_data['message'], 'success')
@@ -185,7 +185,7 @@ class TestEndpoints(unittest.TestCase):
     #     self.assertTrue(response_data['data'])
 
     def test_get_all_interventions_not_existing(self):
-        request_data = self.app.get('/api/v2/interventions')
+        request_data = self.app.get('/api/v2/interventions', headers={"token": self.generated_token})
         response_data = json.loads(request_data.data.decode())
         self.assertEqual(request_data.status_code, 404)
         self.assertIn(response_data['message'], 'there are no interventions')
