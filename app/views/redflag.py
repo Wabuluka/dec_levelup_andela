@@ -10,8 +10,8 @@ valid = ValidationRedFlags()
 def token_req(end_point):
     @wraps(end_point)
     def check(*args, **kwargs):
-        if 'token' in request.headers:
-            tk = request.headers['token']
+        if request.headers.get("Authorization"):
+            tk = request.headers.get("Authorization")
         else:
             return jsonify({'message': 'you should login'})
         try:

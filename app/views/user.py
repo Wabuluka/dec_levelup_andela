@@ -10,19 +10,21 @@ user = Blueprint('users', __name__)
 usermodel = UserModel()
 valid = Validation()
 
-def token_req(end_point):
-    @wraps(end_point)
-    def check(*args, **kwargs):
-        if 'token' in request.headers:
-            tk = request.headers['token']
-        else:
-            return jsonify({'message': 'you should login'})
-        try:
-            jwt.decode(tk, 'wabuluka')
-        except:
-            return jsonify({'message': 'user not authenticated'})
-        return end_point(*args, **kwargs)
-    return check
+# def token_req(end_point):
+#     @wraps(end_point)
+#     def check(*args, **kwargs):
+#         print('hello')
+#         if request.headers.get("Authorization"):
+#             tk = request.headers.get("Authorization")
+#             print(tk)
+#         else:
+#             return jsonify({'message': 'you should login'})
+#         try:
+#             jwt.decode(tk, 'wabuluka')
+#         except:
+#             return jsonify({'message': 'user not authenticated'})
+#         return end_point(*args, **kwargs)
+#     return check
 
 @user.route('/signup', methods=["POST"])
 def create_user():
