@@ -8,6 +8,7 @@ omit =
     */home/travis/virtualenv/*
     */usr/lib/python3/*
     */__init__.py
+    */utilities/*
     */tests/*
     config.py
     run.py

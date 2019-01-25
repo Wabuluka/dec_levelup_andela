@@ -14,7 +14,7 @@ class DatabaseConnection:
                     lastname VARCHAR(50) NOT NULL,
                     othernames VARCHAR(50) NULL,
                     email VARCHAR(100) NOT NULL,
-                    phonenumber INT NOT NULL,
+                    phonenumber INTEGER NOT NULL,
                     username VARCHAR(50) NOT NULL,
                     password VARCHAR(200) NOT NULL,
                     role BOOLEAN DEFAULT FALSE NOT NULL
@@ -70,6 +70,16 @@ class DatabaseConnection:
                 self.cursor.execute(command)
         except Exception as error:
             print(f"error: {error}")
+
+        self.cursor.execute("SELECT * FROM users WHERE email='{}'".format("admin@gmail.com"))
+        if self.cursor.fetchone():
+            return None
+        sql = "INSERT INTO users(firstname, lastname, othernames, email, phonenumber, username, password, role) VALUES('admin', 'admin', 'admin', 'admin@gmail.com', '076555444', 'admin', '123', True)"
+
+        self.cursor.execute(sql)
+        self.connection.commit()
+
+
 
     """
     method to drop tables being used in my tests

@@ -10,6 +10,7 @@ redflagmodel = RedFlag()
 
 @admin.route('/red-flags/<int:id>/status', methods=["PATCH"])
 def redflag_edit_status(id):
+    
     data = request.get_json()
     status = data["status"]
     edit = redflagmodel.patch_redflag_status(id, status)

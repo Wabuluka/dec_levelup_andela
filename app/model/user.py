@@ -1,5 +1,6 @@
 from app.model.db import DatabaseConnection
-from flask import request
+from flask import request, jsonify
+# from validate_email import validate_email
 import datetime
 import json
 import re
@@ -46,9 +47,29 @@ class UserModel:
     def patch_intervention_status(self, id, status):
         self.cursor.execute(f"UPDATE intervention SET status='{status}' WHERE id = {id}")
         return True
+    
+class Validation:
 
-"""
-    Validators for the user sign up
-"""
-class UserValidation:
-    pass
+    def validate_user_details(self, firstname, lastname, othernames, username, email, phonenumber, password):
+        if not firstname and lastname and othernames and username and email and phonenumber and password:
+            return jsonify({"message": "all fields are required"}), 400
+
+        if not firstname == "" and lastname == "" and othernames == "" and username == "" and email == "" \
+            and phonenumber == "" and password == "":
+            return jsonify({"message": "fields cant be  empty"}), 400
+
+        # valid_email = validate_email(email)
+        # if not valid_email:
+        #     return jsonify({
+        #         "error": "Please use a valid email address for example nich@gmail"
+        #     }), 400
+
+        if not firstname.isalpha() or not lastname.isalpha():
+            return jsonify({
+                "error": "First and last name should only be alphabets"
+            }), 400
+
+        # if not isinstance(['phonenumber'], int):
+        #     return jsonify({"message":"phonenumber should be an interger"}), 400
+
+    

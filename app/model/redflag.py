@@ -1,4 +1,5 @@
 from app.model.db import DatabaseConnection
+from flask import jsonify
 import datetime
 import json
 
@@ -32,7 +33,7 @@ class RedFlag:
 
     # gets a specific incident by id regardless of the casetype
     def get_one(self, id):
-        self.cursor.execute("SELECT * FROM redflag WHERE id =%s", (id,))
+        self.cursor.execute("SELECT * FROM redflag WHERE id = %s", (id,))
         return self.cursor.fetchone()
 
 
@@ -54,4 +55,12 @@ class RedFlag:
     
 # validation for the redflags
 class ValidationRedFlags:
-    pass
+
+    def validate_redflag(self, createdby, casetype, location, status, comment):
+        if not createdby and casetype and location and status and comment:
+            return jsonify({"message": "No field should be left empty"})
+
+  
+       
+
+       
